@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>REWE Lieferservice - Shopping Liste</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: rgba(242, 241, 239, .3);
+            padding: 20px;
+        }
+
+        div.wrapper {
+            background-color: rgba(242, 241, 239, .8);
+            width: 350px;
+            padding: 5px 10px;
+            margin: 0 auto;
+        }
+
+        input {
+            margin: 10px 0px;
+            width: 300px;
+            height: 40px;
+            font-family: sans-serif;
+            font-size: 23.4px;
+            font-weight: normal;
+            padding-bottom: 6px;
+            padding-left: 30px;
+            padding-right: 15px;
+            padding-top: 9px;
+            display: block;
+        }
+
+        #login_button {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(204, 7, 30);
+            background-image: none;
+            background-origin: padding-box;
+            background-size: auto;
+            border-bottom-color: rgb(185, 6, 29);
+            border-bottom-style: solid;
+            border-bottom-width: 4px;
+            border-image-outset: 0px;
+            border-image-repeat: stretch;
+            border-image-slice: 100%;
+            border-image-source: none;
+            border-image-width: 1;
+            border-left-color: rgb(255, 255, 255);
+            border-left-style: none;
+            border-left-width: 0px;
+            border-right-color: rgb(255, 255, 255);
+            border-right-style: none;
+            border-right-width: 0px;
+            border-top-color: rgb(255, 255, 255);
+            border-top-style: none;
+            border-top-width: 0px;
+            box-sizing: border-box;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 23.4px;
+            font-weight: normal;
+            height: 43px;
+            line-height: normal;
+            margin: 0px;
+            padding-bottom: 6px;
+            padding-left: 30px;
+            padding-right: 15px;
+            padding-top: 9px;
+            position: relative;
+            text-align: center;
+            text-indent: -15px;
+            vertical-align: middle;
+            word-wrap: break-word;
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>REWE Lieferservice</h1>
+    <h2>Zugangsdaten</h2>
+    <p>Geben Sie Ihre Logindaten ein.</p>
+
+    <div class="loginFields">
+        <input type="text" name="username" placeholder="Benutzername" value="pebble-test@test.test"/>
+        <input type="password" name="pw" placeholder="Passwort" value="1234abcd"/>
+    </div>
+
+    <p>
+        <button id="login_button">Anmelden und Weiter</button>
+    </p>
+
+    <div id="errorLog"></div>
+</div>
+<script>
+    (function () {
+
+        //Setup to allow easy adding more options later
+        function saveOptions() {
+
+            var options = {
+                "username": document.querySelectorAll('.loginFields input')[0].value,
+                "pw": document.querySelectorAll('.loginFields input')[1].value
+            };
+
+            return options;
+        }
+
+        var submitButton = document.getElementById("login_button");
+
+        submitButton.addEventListener("click",function () {
+
+            var options = saveOptions();
+            var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(options));
+            document.location = location;
+
+        }, false);
+
+    }());
+</script>
+</body>
+</html>
